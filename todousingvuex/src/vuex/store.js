@@ -1,22 +1,26 @@
 import { createStore } from "vuex";
- const store= createStore({
-    state:{
-        data:"Harry",
-        arr:[],
+const store = createStore({
+  state: {
+    todos: [],
+    editing:false,
+  },
+  getters: {
+    todosLength(state) {
+      return state.todos.length;
     },
-    mutations:{
-        setData(state,payload){
-            state.data=[...arr,payload.data]
-        },
-        deleteData(state,payload){
-
-        },
-        editData(state,payload){
-
-        }
+  },
+  mutations: {
+    setData(state, payload) {
+      state.todos.push(payload);
     },
-    actions:{
+    deleteData(state, payload) {
+        state.todos = state.todos.filter(todo => todo.id !== payload);
+    },
+    editData(state, payload) {
+        edit=true;
+        console.log(payload);
 
-    }
-})
+    },
+  },
+});
 export default store;
