@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="m_div">
-      <div>
+      <div class="head_div">
         <h1>Todo App</h1>
+        <button class="route_btn" @click="handleRoute">Go to other pages</button>
       </div>
       <div class="main_div">
         <form @submit.prevent="handleSubmit(todo)">
-          <input type="text" placeholder="Enter your todos" v-model="todo" />
+          <input type="text" placeholder="Enter your todos"  v-model="todo" />
           <v-btn  class="btn">Submit</v-btn>
         </form>
         <div v-if="todos.length > 0">
@@ -42,6 +43,9 @@ export default {
       console.log(todo);
       this.$store.state.editing == true;
     },
+    handleRoute(){
+     this.$router.push('/home')
+    }
   },
   computed: {
     ...mapState(["todos"]),
@@ -84,5 +88,14 @@ input {
   margin-top: 10px;
   font-weight: 700;
   color: #fff;
+}
+.head_div{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.route_btn{
+  background: #6b80ca;
+  padding:0px 10px 0px 10px;
 }
 </style>
